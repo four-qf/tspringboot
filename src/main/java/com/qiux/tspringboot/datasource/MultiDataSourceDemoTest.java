@@ -23,11 +23,11 @@ import java.sql.SQLException;
  * @date 2020/2/2
  */
 @Slf4j
-@SpringBootApplication(exclude = {
-        DataSourceAutoConfiguration.class,
-        DataSourceTransactionManagerAutoConfiguration.class,
-        JdbcTemplateAutoConfiguration.class
-})
+//@SpringBootApplication(exclude = {
+//        DataSourceAutoConfiguration.class,
+//        DataSourceTransactionManagerAutoConfiguration.class,
+//        JdbcTemplateAutoConfiguration.class
+//})
 public class MultiDataSourceDemoTest implements InitializingBean, CommandLineRunner {
 
     @Resource(name = "testTxManager")

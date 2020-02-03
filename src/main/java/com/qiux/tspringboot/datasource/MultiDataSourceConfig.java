@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  * @date 2020/2/2
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class MultiDataSourceConfig {
 
     @Bean
