@@ -15,7 +15,7 @@ import java.sql.SQLException;
  * @author qiuxian
  * @date 2020/1/25
  */
-//@SpringBootApplication
+@SpringBootApplication
 @Slf4j
 public class DataSourceApplication implements CommandLineRunner {
 
