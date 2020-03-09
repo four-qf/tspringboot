@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.datasource;
+package com.qiux.tspringboot.datasourcetest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +8,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * @author qiuxian
- * @date 2020/2/3
+ * @date 2020/1/25
  */
-@Slf4j
 @SpringBootApplication
-public class DruidDataSourceDemoApplication implements CommandLineRunner {
+@Slf4j
+public class DataSourceApplication implements CommandLineRunner {
 
     @Autowired
     private DataSource dataSource;
@@ -23,12 +25,25 @@ public class DruidDataSourceDemoApplication implements CommandLineRunner {
     private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(DruidDataSourceDemoApplication.class, args);
+        SpringApplication.run(DataSourceApplication.class);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        showConnection();
+        showData();
+    }
+
+    private void showConnection() throws SQLException {
         log.info(dataSource.toString());
+        Connection conn = dataSource.getConnection();
+        log.info(conn.toString());
+        conn.close();
+    }
+
+    private void showData() {
+        jdbcTemplate.queryForList("SELECT * FROM student")
+                .forEach(student -> log.info(student.toString()));
     }
 
 }

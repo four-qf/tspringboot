@@ -1,5 +1,7 @@
 package com.qiux.tspringboot;
 
+import com.qiux.tspringboot.entity.Student;
+import com.qiux.tspringboot.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.InvalidConfigurationException;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -21,6 +24,9 @@ import java.util.List;
 @SpringBootTest
 @Slf4j
 class TspringbootApplicationTests {
+
+    @Autowired
+    private StudentService studentService;
 
     @Test
     void contextLoads() throws InterruptedException, SQLException, InvalidConfigurationException, XMLParserException, IOException {
@@ -37,6 +43,21 @@ class TspringbootApplicationTests {
         DefaultShellCallback callback = new DefaultShellCallback(true);
         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
+    }
+
+    @Test
+    void save() {
+        Student student = new Student();
+        student.setAge(21);
+        student.setEmail("qiuxian@163.com");
+        student.setName("qx");
+        student.setPhone("18981752567");
+        System.out.println(studentService.save(student));
+    }
+
+    @Test
+    public void show() {
+        System.out.println(studentService.getById(1));
     }
 
 }

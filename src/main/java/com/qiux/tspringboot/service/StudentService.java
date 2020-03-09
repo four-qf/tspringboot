@@ -14,4 +14,6 @@ public interface StudentService {
 
     Student getById(Integer id);
 
+    Student save(Student student);
+
 }

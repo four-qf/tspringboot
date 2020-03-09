@@ -34,7 +34,7 @@
     delete from student
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.qiux.tspringboot.entity.Student">
+  <insert id="insert" parameterType="com.qiux.tspringboot.entity.Student" useGeneratedKeys="true" keyColumn="id">
     insert into student (name, age, phone, 
       email, grade)
     values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
