@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.annontationtest;
+package com.qiux.tspringboot.test.annontationtest;
 
 /**
  * @author qiuxian

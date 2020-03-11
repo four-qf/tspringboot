@@ -1,9 +1,8 @@
-package com.qiux.tspringboot.datasourcetest;
+package com.qiux.tspringboot.test.datasourcetest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,9 +47,9 @@ public class MultiDataSourceDemoTest implements InitializingBean, CommandLineRun
         testJdbcTemplate = new JdbcTemplate(testDataSource);
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(MultiDataSourceDemoTest.class, args);
-    }
+//    public static void main(String[] args) {
+//        SpringApplication.run(MultiDataSourceDemoTest.class, args);
+//    }
 
     private void showUserConnection() throws SQLException {
         log.info(userDataSource.toString());

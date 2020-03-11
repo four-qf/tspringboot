@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.annontationtest;
+package com.qiux.tspringboot.test.annontationtest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2020/1/28
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class Config {
 
     @Bean

@@ -9,7 +9,7 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/user" userId="root" password="123456" />
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/user" userId="root" password="123456" />
 
         <javaModelGenerator targetPackage="com.qiux.tspringboot.entity" targetProject="./src/main/java" >
             <property name="enableSubPackages" value="true"/>
