@@ -1,9 +1,13 @@
 package com.qiux.tspringboot.test.transactiontest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -13,8 +17,9 @@ import org.springframework.transaction.support.TransactionTemplate;
  * @date 2020/3/5
  */
 @Slf4j
-//@SpringBootApplication
-public class ProgrammicTransactionDemoApplication implements CommandLineRunner {
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
+public class ProgrammicTransactionDemoApplication {
 
     @Autowired
     private TransactionTemplate transactionTemplate;
@@ -22,12 +27,8 @@ public class ProgrammicTransactionDemoApplication implements CommandLineRunner {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    public static void main(String[] args) {
-//        SpringApplication.run(ProgrammicTransactionDemoApplication.class);
-//    }
-
-    @Override
-    public void run(String... args) throws Exception {
+    @Test
+    public void programmicTransaction() {
         log.info("COUNT BEFORE TRANSACTION: {}", getCount());
 //        transactionTemplate.execute(new TransactionCallbackWithoutResult(){
 //

@@ -3,6 +3,7 @@ package com.qiux.tspringboot.ctrl;
 import com.qiux.tspringboot.entity.Student;
 import com.qiux.tspringboot.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,14 @@ public class StudentController {
     @RequestMapping("/get/{id}")
     public Student getStudentById(@PathVariable Integer id) {
         return studentService.getById(id);
+    }
+
+    @RequestMapping("/create")
+    public Object createStudent(Student student) {
+        if(student == null || StringUtils.isEmpty(student.getName()) || student.getAge() == null ) {
+            return "请输入信息";
+        }
+        return studentService.save(student);
     }
 
 }

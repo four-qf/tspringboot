@@ -1,27 +1,26 @@
 package com.qiux.tspringboot.test.annontationtest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author qiuxian
  * @date 2020/1/28
  */
 @Slf4j
-//@SpringBootApplication
-public class ConditionalOnBeanApplication implements CommandLineRunner {
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class ConditionalOnBeanApplication {
 
     @Autowired(required = false)
     private People people;
 
-//    public static void main(String[] args) {
-//        SpringApplication.run(ConditionalOnBeanApplication.class);
-//    }
-
-    @Override
-    public void run(String... args) throws Exception {
+    @Test
+    public void testPeople() throws Exception {
 
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         log.info("people = " + people);

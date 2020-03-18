@@ -1,9 +1,13 @@
 package com.qiux.tspringboot.test.datasourcetest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -13,21 +17,18 @@ import java.sql.SQLException;
  * @author qiuxian
  * @date 2020/1/25
  */
-//@SpringBootApplication
 @Slf4j
-public class DataSourceApplication implements CommandLineRunner {
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
+public class DataSourceApplication {
 
     @Autowired
     private DataSource dataSource;
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-//    public static void main(String[] args) {
-//        SpringApplication.run(DataSourceApplication.class);
-//    }
-
-    @Override
-    public void run(String... args) throws Exception {
+    @Test
+    public void run() throws Exception {
         showConnection();
         showData();
     }

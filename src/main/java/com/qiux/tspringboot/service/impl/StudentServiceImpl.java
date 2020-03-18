@@ -1,7 +1,8 @@
-package com.qiux.tspringboot.service;
+package com.qiux.tspringboot.service.impl;
 
 import com.qiux.tspringboot.entity.Student;
 import com.qiux.tspringboot.mapper.StudentMapper;
+import com.qiux.tspringboot.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

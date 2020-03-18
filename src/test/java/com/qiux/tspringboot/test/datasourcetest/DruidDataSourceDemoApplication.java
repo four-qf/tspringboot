@@ -1,10 +1,14 @@
 package com.qiux.tspringboot.test.datasourcetest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
 
@@ -13,20 +17,15 @@ import javax.sql.DataSource;
  * @date 2020/2/3
  */
 @Slf4j
-//@SpringBootApplication
-public class DruidDataSourceDemoApplication implements CommandLineRunner {
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
+public class DruidDataSourceDemoApplication{
 
     @Autowired
     private DataSource dataSource;
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
-    public static void main(String[] args) {
-        SpringApplication.run(DruidDataSourceDemoApplication.class, args);
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
+    @Test
+    public void testDataSource(){
         log.info(dataSource.toString());
     }
 

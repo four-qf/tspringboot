@@ -1,9 +1,17 @@
 package com.qiux.tspringboot.test.datasourcetest;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,12 +26,14 @@ import java.sql.SQLException;
  * @date 2020/2/2
  */
 @Slf4j
-//@SpringBootApplication(exclude = {
+//@EnableAutoConfiguration(exclude={
 //        DataSourceAutoConfiguration.class,
 //        DataSourceTransactionManagerAutoConfiguration.class,
 //        JdbcTemplateAutoConfiguration.class
 //})
-public class MultiDataSourceDemoTest implements InitializingBean, CommandLineRunner {
+//@SpringBootTest
+//@RunWith(SpringRunner.class)
+public class MultiDataSourceDemoTest implements InitializingBean {
 
     @Resource(name = "testTxManager")
     private PlatformTransactionManager testTxManager;
@@ -42,14 +52,10 @@ public class MultiDataSourceDemoTest implements InitializingBean, CommandLineRun
     private JdbcTemplate userJdbcTemplate;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         userJdbcTemplate = new JdbcTemplate(userDataSource);
         testJdbcTemplate = new JdbcTemplate(testDataSource);
     }
-
-//    public static void main(String[] args) {
-//        SpringApplication.run(MultiDataSourceDemoTest.class, args);
-//    }
 
     private void showUserConnection() throws SQLException {
         log.info(userDataSource.toString());
@@ -78,8 +84,8 @@ public class MultiDataSourceDemoTest implements InitializingBean, CommandLineRun
                 .forEach(user -> log.info(user.toString()));
     }
 
-    @Override
-    public void run(String... args) throws Exception {
+    @Test
+    public void testMultiDataSource() throws Exception {
         log.info("test connection start -----------------------------");
         showTestConnection();
         log.info("test connection end -------------------------------");
