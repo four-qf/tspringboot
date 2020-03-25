@@ -1,4 +1,4 @@
-package com.qiux.tspringboot;
+package com.qiux.tspringboot.test.reflect;
 
 import sun.reflect.CallerSensitive;
 import sun.reflect.Reflection;
@@ -6,7 +6,7 @@ import sun.reflect.Reflection;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-public class TestMain {
+public class ReflectionCallerClassTest {
     /**
      * Reflection.getCallerClass() api without @CallerSensitive
      * When Class is loaded by App/Ext/Bootstrap ClassLoader then java.lang.InternalError: CallerSensitive annotation expected at frame 1
@@ -22,7 +22,7 @@ public class TestMain {
     /**
      * Reflection.getCallerClass() api with @CallerSensitive
      * When Class is loaded by AppClassLoader then java.lang.InternalError: CallerSensitive annotation expected at frame 1
-     * When Class is loaded by ExtClassLoader/BootstrapClassLoader, then works fine.
+     * When Class is loaded by ExtCla¬ssLoader/BootstrapClassLoader, then works fine.
      */
     @CallerSensitive
     private static void getCallerClassWithCallerSensitive() {
@@ -75,13 +75,13 @@ public class TestMain {
 
         //reflection call
         System.out.format("Enter reflection call %s%n", methodName);
-        Method method = TestMain.class.getDeclaredMethod(methodName);
+        Method method = ReflectionCallerClassTest.class.getDeclaredMethod(methodName);
         method.invoke(null);
         System.out.format("Exit reflection call %s%n%n", methodName);
     }
 
     public static void main(String[] args) throws Exception {
-        System.out.format("Main class loaded by %s%n%n", TestMain.class.getClassLoader());
+        System.out.format("Main class loaded by %s%n%n", ReflectionCallerClassTest.class.getClassLoader());
 
         invoke("getCallerClassWithoutCallerSensitive");
         invoke("getCallerClassWithCallerSensitive");
