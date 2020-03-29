@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.test.pattern;
+package com.qiux.tspringboot.test.generic;
 
 import java.util.List;
 import java.util.Objects;
