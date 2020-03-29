@@ -1,6 +1,7 @@
 package com.qiux.tspringboot.test.reflect;
 
 import org.reflections.Reflections;
+import org.springframework.core.ResolvableTypeProvider;
 
 import java.lang.reflect.Type;
 
@@ -12,8 +13,8 @@ public class ReflectionSubClassTest {
 
     public static void main(String[] args) {
 
-        Reflections reflections = new Reflections("java.lang.reflect");
-        System.out.println(reflections.getSubTypesOf(Type.class));
+        Reflections reflections = new Reflections();
+        System.out.println(reflections.getSubTypesOf(ResolvableTypeProvider.class));
     }
 
 }

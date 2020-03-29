@@ -1,5 +1,6 @@
 package com.qiux.tspringboot.test.reflect.type;
 
+import com.qiux.tspringboot.test.reflect.reflecttype.ResolvableTypeTest;
 import lombok.Data;
 
 import java.lang.annotation.ElementType;
@@ -8,7 +9,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Data
 public class TypeBean<T> {
@@ -19,8 +19,8 @@ public class TypeBean<T> {
     private Map<String,String> map;
     private List<String>[] lists;
     private List<T> list;
-    private RosolverTest<T> rosolverTest;
-    private RosolverTest<?> rosolverRosolverTest;
+    private ResolvableTypeTest<T> rosolverTest;
+    private ResolvableTypeTest<?> rosolverRosolverTest;
 
     private Address address;
 
