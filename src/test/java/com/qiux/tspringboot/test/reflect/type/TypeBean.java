@@ -1,5 +1,7 @@
 package com.qiux.tspringboot.test.reflect.type;
 
+import lombok.Data;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@Data
 public class TypeBean<T> {
 
     private T t;
@@ -35,11 +38,9 @@ public class TypeBean<T> {
     @Retention(RetentionPolicy.RUNTIME)
     @interface AnnotationTest {
     }
-
     public class Address {
 
     }
-
     public void showBean(List<? extends Address> addresses) {
         System.out.println("TypeBean method showBean test");
     }
