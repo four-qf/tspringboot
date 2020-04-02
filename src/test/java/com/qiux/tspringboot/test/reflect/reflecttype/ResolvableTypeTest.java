@@ -31,9 +31,4 @@ public class ResolvableTypeTest<T> {
 
     }
 
-//    public static void forField() throws Exception {
-//        Field field = Fields.class.getField("charSequenceList");
-//        ResolvableType type = ResolvableType.forField(field);
-//        assertThat(type.getType(), equalTo(field.getGenericType()));
-//    }
 }
