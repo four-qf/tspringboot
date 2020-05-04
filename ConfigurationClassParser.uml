@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.context.annotation.ConfigurationClassParser</OriginalElement>
+  <nodes>
+    <node x="1491.5919100857204" y="204.04716259057417">org.springframework.context.annotation.ConfigurationClassParser.CircularImportProblem</node>
+    <node x="734.4086521057077" y="946.5022324122119">org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorGrouping</node>
+    <node x="1259.0004539253594" y="80.19733079604246">org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorHandler</node>
+    <node x="1588.9943668588376" y="849.817403438284">org.springframework.context.annotation.ConfigurationClassParser.DefaultDeferredImportSelectorGroup</node>
+    <node x="1769.8280535103402" y="337.59616626326635">org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorHolder</node>
+    <node x="682.9086521057077" y="226.50223241221198">org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorGroupingHandler</node>
+    <node x="1548.6138519289677" y="672.4140738173135">org.springframework.context.annotation.ConfigurationClassParser.ImportStack</node>
+    <node x="444.9086521057077" y="421.502232412212">org.springframework.context.annotation.ConfigurationClassParser</node>
+    <node x="83.40865210570769" y="586.5022324122119">org.springframework.context.annotation.ConfigurationClassParser.SourceClass</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorGrouping" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="0.0" y="-48.0" />
+      <point x="0.0" y="213.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorHandler" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="0.0" y="37.0" />
+      <point x="1473.1507179920359" y="474.5022324122119" />
+      <point x="486.0" y="-160.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorHolder" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="0.0" y="48.0" />
+      <point x="2036.959092554604" y="552.3880777120794" />
+      <point x="486.0" y="-80.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.ImportStack" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="0.0" y="37.0" />
+      <point x="1742.754503484439" y="597.2546979895341" />
+      <point x="486.0" y="-40.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.SourceClass" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="127.5" y="-0.0" />
+      <point x="-486.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.DefaultDeferredImportSelectorGroup" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="-154.0" y="-0.0" />
+      <point x="486.0" y="-0.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.CircularImportProblem" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="0.0" y="25.5" />
+      <point x="1749.8539881742486" y="514.5022324122119" />
+      <point x="486.0" y="-120.0" />
+    </edge>
+    <edge source="org.springframework.context.annotation.ConfigurationClassParser.DeferredImportSelectorGroupingHandler" target="org.springframework.context.annotation.ConfigurationClassParser">
+      <point x="0.0" y="48.0" />
+      <point x="0.0" y="-213.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5730022831050228" x="1214.4841119633431" y="565.3417671082777" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
