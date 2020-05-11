@@ -3,6 +3,8 @@ package com.qiux.tspringboot.test.collection;
 import com.google.common.collect.Sets;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -16,6 +18,15 @@ public class CollectionUtil {
         System.out.println(unmodifiableSet);
 //        unmodifiableSet.add("g");
 //        System.out.println(unmodifiableSet);
+        Map<Integer,String> map = new HashMap<>();
+        map.put(1,"a");
+        map.put(2,"b");
+        map.put(3,"c");
+
+        map.entrySet().forEach(entry -> {
+            System.out.println(entry.getKey());
+        });
+
     }
 
 }

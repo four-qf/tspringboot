@@ -16,4 +16,6 @@ public interface StudentService {
 
     Student save(Student student);
 
+    int updatePhoneById(String phone, Integer Id);
+
 }
