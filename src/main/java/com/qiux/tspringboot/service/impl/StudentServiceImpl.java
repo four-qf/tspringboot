@@ -1,5 +1,6 @@
 package com.qiux.tspringboot.service.impl;
 
+import com.qiux.tspringboot.cache.StudentServiceCache;
 import com.qiux.tspringboot.entity.Student;
 import com.qiux.tspringboot.mapper.StudentMapper;
 import com.qiux.tspringboot.service.StudentService;
@@ -22,6 +23,9 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
 
+    @Autowired
+    private StudentServiceCache studentServiceCache;
+
     @Override
     public List<Student> findAll() {
         return studentMapper.selectAll();
@@ -29,6 +33,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getById(Integer id) {
+        Student studentCache = studentServiceCache.getStudent(id);
+        if (studentCache != null) {
+            return studentCache;
+        }
         return studentMapper.selectByPrimaryKey(id);
     }
 
@@ -38,6 +46,11 @@ public class StudentServiceImpl implements StudentService {
         Student student = new Student();
         student.setPhone(phone);
         student.setId(id);
+        Student studentCache = getById(id);
+        if (studentCache != null) {
+            student.setPhone(phone);
+            studentServiceCache.setStudent(student);
+        }
         return studentMapper.updateByPrimaryKeySelective(student);
     }
 
@@ -45,7 +58,11 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public Student save(Student student) {
         int row = studentMapper.insert(student);
-        updatePhoneById("18981762565", student.getId());
+        if (row != 0) {
+            studentServiceCache.setStudent(student);
+        }
+//        updatePhoneById("18981762565", student.getId());
+
         return row != 0 ? student : null;
     }
 
