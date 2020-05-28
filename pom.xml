@@ -85,12 +85,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
-            <!--<exclusions>-->
-            <!--<exclusion>-->
-            <!--<artifactId>HikariCP</artifactId>-->
-            <!--<groupId>com.zaxxer</groupId>-->
-            <!--</exclusion>-->
-            <!--</exclusions>-->
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -110,13 +104,11 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <!--<version>1.7.4</version>-->
         </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <!--<version>1.7.4</version>-->
         </dependency>
 
         <dependency>
@@ -131,11 +123,24 @@
             <version>1.2.68</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
     </dependencies>
 
     <build>
-
 
         <plugins>
             <plugin>
