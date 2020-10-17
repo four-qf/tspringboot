@@ -3,7 +3,7 @@ package com.qiux.tspringboot.entity;
 import lombok.Data;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+//import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.Serializable;
@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @ConfigurationProperties("user")
 @Configuration
-@RefreshScope
+//@RefreshScope
 @Data
 public class User implements Serializable {
 

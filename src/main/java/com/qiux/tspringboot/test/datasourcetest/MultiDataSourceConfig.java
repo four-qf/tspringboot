@@ -19,34 +19,34 @@ import javax.sql.DataSource;
 //@Configuration
 public class MultiDataSourceConfig {
 
-    @Bean
+//    @Bean
     @ConfigurationProperties("user.datasource")
     public DataSourceProperties userDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean
+//    @Bean
     public DataSource userDataSource() {
         DataSourceProperties dataSourceProperties = userDataSourceProperties();
         log.info("foo datasource: {}", dataSourceProperties);
         return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 
-    @Bean
-    @Resource
+//    @Bean
+//    @Resource
     public PlatformTransactionManager userTxManager(DataSource testDataSource) {
         return new DataSourceTransactionManager(testDataSource);
     }
 
 
-    @Bean
+//    @Bean
     @Primary
-    @ConfigurationProperties("test.datasource")
+//    @ConfigurationProperties("test.datasource")
     public DataSourceProperties testDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean
+//    @Bean
     @Primary
     public DataSource testDataSource() {
         DataSourceProperties dataSourceProperties = testDataSourceProperties();
@@ -54,9 +54,9 @@ public class MultiDataSourceConfig {
         return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 
-    @Bean
+//    @Bean
     @Primary
-    @Resource
+//    @Resource
     public PlatformTransactionManager testTxManager(DataSource testDataSource) {
         return new DataSourceTransactionManager(testDataSource);
     }

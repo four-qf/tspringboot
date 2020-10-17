@@ -1,26 +1,26 @@
 ## 框架集成属性配置
-spring:
-  application:
-    name: nacos-config
-  profiles:
-#    active: dev
-  main:
-    allow-bean-definition-overriding: true
-  cloud:
-    nacos:
-      username: nacos
-      password: nacos
-      config:
-        server-addr: 127.0.0.1:8848
-        file-extension: yaml
-        refresh-enabled: true
-        namespace: 2af38fe3-2f71-45f9-b685-fc090abc021d
-#        group: '${nacos.group}'
-      discovery:
-        enabled: true
-        register-enabled: true
-        namespace: 2af38fe3-2f71-45f9-b685-fc090abc021d
-        server-addr: 127.0.0.1:8848
+#spring:
+#  application:
+#    name: nacos-config
+#  profiles:
+##    active: dev
+#  main:
+#    allow-bean-definition-overriding: true
+#  cloud:
+#    nacos:
+#      username: nacos
+#      password: nacos
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        file-extension: yaml
+#        refresh-enabled: true
+#        namespace: 2af38fe3-2f71-45f9-b685-fc090abc021d
+##        group: '${nacos.group}'
+#      discovery:
+#        enabled: true
+#        register-enabled: true
+#        namespace: 2af38fe3-2f71-45f9-b685-fc090abc021d
+#        server-addr: 127.0.0.1:8848
 #        group: '${nacos.group}'
 
 # Actuator
@@ -61,7 +61,9 @@ spring.datasource.druid.filter.walll.config.drop-table-allow: false
 mybatis.mapper-locations: classpath*:/mapper/*.xml
 mybatis.type-aliases-package: com.qiux.tspringboot.mapper
 mybatis.configuration.map-underscore-to-camel-case: true
-logging.level.com.qiux.tspringboot.mapper: debug
+#logging.level.com.qiux.tspringboot.mapper:
+logging.config: classpath:logback-spring.xml
+
 server:
   port: 8089
 
