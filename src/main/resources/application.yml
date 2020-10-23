@@ -43,7 +43,7 @@ spring.datasource.druid.filters: conn,config,stat
 spring.datasource.druid.test-on-borrow: true
 spring.datasource.druid.test-on-return: true
 spring.datasource.druid.test-while-idle: true
-#spring.datasource.druid.filter.log4j.enabled: true
+spring.datasource.druid.filter.log4j.enabled: true
 spring.datasource.druid.filter.stat.log-slow-sql: true
 
 ##SQL防注入
@@ -61,11 +61,17 @@ spring.datasource.druid.filter.walll.config.drop-table-allow: false
 mybatis.mapper-locations: classpath*:/mapper/*.xml
 mybatis.type-aliases-package: com.qiux.tspringboot.mapper
 mybatis.configuration.map-underscore-to-camel-case: true
-#logging.level.com.qiux.tspringboot.mapper:
+#logging.level: debug
 logging.config: classpath:logback-spring.xml
 
 server:
   port: 8089
+
+#rocketmq
+rocketmq.name-server: 81.71.31.103:9876
+rocketmq.producer.group: test
+rocketmq.producer.sendMessageTimeout: 10000
+#rocketmq.producer.isVIPChannel: false
 
 
 
