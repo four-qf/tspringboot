@@ -69,7 +69,7 @@ server:
 
 #rocketmq
 rocketmq.name-server: 81.71.31.103:9876
-rocketmq.producer.group: test
+rocketmq.producer.group: crue-cat-test-group
 rocketmq.producer.sendMessageTimeout: 10000
 #rocketmq.producer.isVIPChannel: false
 
