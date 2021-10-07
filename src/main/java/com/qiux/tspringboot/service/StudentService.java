@@ -16,4 +16,5 @@ public interface StudentService {
 
     Student save(Student student);
 
+    void saveD();
 }

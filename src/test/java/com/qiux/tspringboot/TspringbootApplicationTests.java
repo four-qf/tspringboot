@@ -48,9 +48,9 @@ class TspringbootApplicationTests {
     @Test
     void save() {
         Student student = new Student();
-        student.setAge(21);
+        student.setAge(24);
         student.setEmail("qiuxian@163.com");
-        student.setName("qx");
+        student.setName("qx4");
         student.setPhone("18981752567");
         System.out.println(studentService.save(student));
     }

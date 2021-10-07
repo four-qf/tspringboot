@@ -1,10 +1,15 @@
 package com.qiux.tspringboot.util;
 
+import java.util.ArrayList;
+
 public class MailUtil {
 
     public static void main(String[] args)  {
 
-        String msg = "<table><thead><tr><th> 标题</th><th> 涉及表</th><th>内容 </th></tr></thead></table>";
+//        String msg = "<table><thead><tr><th> 标题</th><th> 涉及表</th><th>内容 </th></tr></thead></table>";
+
+
+
 
 ////        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 ////        simpleMailMessage.setSubject("test");
