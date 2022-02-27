@@ -14,13 +14,19 @@ import java.net.SocketException;
 public class UdpRecive {
     public static void main(String[] args) throws IOException {
         DatagramSocket datagramSocket = new DatagramSocket(9278);
-        byte[] bytes = new byte[1024];
-        DatagramPacket packet = new DatagramPacket(bytes, bytes.length);
-        datagramSocket.connect(InetAddress.getLocalHost(), 9400);
-        datagramSocket.receive(packet);
 
-        byte[] data = packet.getData();
-        System.out.println(new String(data,0,packet.getLength()));
+        while (true) {
+            byte[] bytes = new byte[1024];
+            DatagramPacket packet = new DatagramPacket(bytes, bytes.length);
+            datagramSocket.connect(InetAddress.getLocalHost(), 9400);
+            datagramSocket.receive(packet);
+            byte[] data = packet.getData();
+            String msg = new String(data, 0, packet.getLength());
+            System.out.println(msg);
+            if (msg.equalsIgnoreCase("bye")) {
+                break;
+            }
+        }
         datagramSocket.close();
 
     }
