@@ -14,7 +14,7 @@ public class UdpSend {
 
     public static void main(String[] args) throws IOException {
 
-        DatagramSocket datagramSocket = new DatagramSocket(9400);
+        DatagramSocket datagramSocket = new DatagramSocket(9797);
 
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -23,7 +23,8 @@ public class UdpSend {
 
             byte[] bytes = msg.getBytes();
             DatagramPacket packet = new DatagramPacket(bytes, bytes.length);
-            datagramSocket.connect(InetAddress.getLocalHost(), 9278);
+            datagramSocket.connect(new InetSocketAddress("localhost", 9690));
+//            datagramSocket.connect(InetAddress.getLocalHost(), 9690);
             datagramSocket.send(packet);
             if (msg.equalsIgnoreCase("bye")) {
                 break;
