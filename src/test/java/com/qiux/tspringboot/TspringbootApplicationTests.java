@@ -1,7 +1,6 @@
 package com.qiux.tspringboot;
 
 import com.qiux.tspringboot.entity.Student;
-import com.qiux.tspringboot.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -25,8 +24,8 @@ import java.util.List;
 @Slf4j
 class TspringbootApplicationTests {
 
-    @Autowired
-    private StudentService studentService;
+//    @Autowired
+//    private StudentService studentService;
 
     @Test
     void contextLoads() throws InterruptedException, SQLException, InvalidConfigurationException, XMLParserException, IOException {
@@ -45,19 +44,19 @@ class TspringbootApplicationTests {
         myBatisGenerator.generate(null);
     }
 
-    @Test
-    void save() {
-        Student student = new Student();
-        student.setAge(24);
-        student.setEmail("qiuxian@163.com");
-        student.setName("qx4");
-        student.setPhone("18981752567");
-        System.out.println(studentService.save(student));
-    }
-
-    @Test
-    public void show() {
-        System.out.println(studentService.getById(1));
-    }
+//    @Test
+//    void save() {
+//        Student student = new Student();
+//        student.setAge(24);
+//        student.setEmail("qiuxian@163.com");
+//        student.setName("qx4");
+//        student.setPhone("18981752567");
+//        System.out.println(studentService.save(student));
+//    }
+//
+//    @Test
+//    public void show() {
+//        System.out.println(studentService.getById(1));
+//    }
 
 }

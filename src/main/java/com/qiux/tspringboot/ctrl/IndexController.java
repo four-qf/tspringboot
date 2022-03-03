@@ -13,7 +13,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public Object index() {
-        return "ok";
+        return "hello";
     }
 
 }

@@ -11,7 +11,7 @@
     <groupId>com.qiux</groupId>
     <artifactId>tspringboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+<!--    <packaging>war</packaging>-->
     <name>tspringboot</name>
     <description>Demo project for Spring Boot</description>
 
@@ -71,6 +71,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
@@ -78,6 +82,13 @@
             <artifactId>mybatis-generator-core</artifactId>
             <version>1.3.7</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 <!--        <dependency>-->
 <!--            <groupId>com.github.danielwegener</groupId>-->
 <!--            <artifactId>logback-kafka-appender</artifactId>-->
@@ -129,18 +140,30 @@
 
     <build>
 
-        <resources>
-            <resource>
-                <directory>src/test/java</directory>
-                <!-- 设置需要打包的文件，可以使用正则表达式 -->
-                <includes>
-                    <include>**/*.yml</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <!-- 开启资源打包过滤 -->
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/test/java</directory>-->
+<!--                &lt;!&ndash; 设置需要打包的文件，可以使用正则表达式 &ndash;&gt;-->
+<!--                <includes>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--                &lt;!&ndash; 开启资源打包过滤 &ndash;&gt;-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
+<!--            <resource>-->
+<!--                <directory>src/resources/java</directory>-->
+<!--                &lt;!&ndash; 设置需要打包的文件，可以使用正则表达式 &ndash;&gt;-->
+<!--                <includes>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                    <include>**/*.properties</include>-->
+<!--                </includes>-->
+<!--                &lt;!&ndash; 开启资源打包过滤 &ndash;&gt;-->
+<!--                <filtering>true</filtering>-->
+<!--            </resource>-->
+<!--        </resources>-->
+
 
         <plugins>
             <plugin>

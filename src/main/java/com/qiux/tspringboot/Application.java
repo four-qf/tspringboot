@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 //@EnableDiscoveryClient
-public class TspringbootApplication  {
+public class Application {
 
 
 	public static void main(String[] args) {
-		SpringApplication.run(TspringbootApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 //	@Override
