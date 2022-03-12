@@ -1,10 +1,16 @@
 package com.qiux.tspringboot.component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.listener.Topic;
+import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -15,6 +21,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @Configuration
 public class IRedisComponent {
+
+
+    @Autowired
+    private RedisProductMessageListener redisProductMessageListener;
 
     @Bean
     public RedisTemplate redisTemplate(RedisConnectionFactory connectionFactory) throws JsonProcessingException {
@@ -30,5 +40,16 @@ public class IRedisComponent {
         template.afterPropertiesSet();
         return template;
     }
+
+    @Bean
+    public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory) {
+        RedisMessageListenerContainer listenerContainer = new RedisMessageListenerContainer();
+        listenerContainer.setConnectionFactory(connectionFactory);
+        MessageListenerAdapter messageListener = new MessageListenerAdapter(redisProductMessageListener);
+        messageListener.afterPropertiesSet();
+        listenerContainer.addMessageListener(messageListener, new ChannelTopic("product"));
+        return listenerContainer;
+    }
+
 
 }

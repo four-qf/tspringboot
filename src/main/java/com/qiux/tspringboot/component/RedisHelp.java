@@ -24,4 +24,8 @@ public class RedisHelp {
         return (T) o;
     }
 
+    public void publish(String channle, String message) {
+        redisTemplate.convertAndSend(channle, message);
+    }
+
 }
