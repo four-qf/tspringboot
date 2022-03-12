@@ -1,5 +1,6 @@
 package com.qiux.tspringboot;
 
+import com.qiux.tspringboot.component.RedisHelp;
 import com.qiux.tspringboot.entity.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,25 @@ class TspringbootApplicationTests {
 
 //    @Autowired
 //    private StudentService studentService;
+
+    @Autowired
+    private RedisHelp redisHelp;
+
+    @Test
+    public void testRedisAddString() {
+        Student student = new Student();
+        student.setAge(19);
+        student.setName("bn");
+        student.setId(8);
+
+        redisHelp.set("user", student);
+    }
+
+    @Test
+    public void testRedisGetString() {
+        Student user = redisHelp.get("user");
+        System.out.println(user);
+    }
 
     @Test
     void contextLoads() throws InterruptedException, SQLException, InvalidConfigurationException, XMLParserException, IOException {
