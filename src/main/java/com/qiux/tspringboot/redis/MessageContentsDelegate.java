@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.component;
+package com.qiux.tspringboot.redis;
 
 /**
  * @author qiux

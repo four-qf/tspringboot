@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.component;
+package com.qiux.tspringboot.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

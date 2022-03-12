@@ -1,6 +1,6 @@
 package com.qiux.tspringboot;
 
-import com.qiux.tspringboot.component.RedisHelp;
+import com.qiux.tspringboot.redis.RedisHelp;
 import com.qiux.tspringboot.entity.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
