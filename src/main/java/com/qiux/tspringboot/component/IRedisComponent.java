@@ -2,6 +2,7 @@ package com.qiux.tspringboot.component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.MessageListener;
@@ -26,6 +27,9 @@ public class IRedisComponent {
     @Autowired
     private RedisProductMessageListener redisProductMessageListener;
 
+    @Autowired
+    private RedisOrderMessageListener redisOrderMessageListener;
+
     @Bean
     public RedisTemplate redisTemplate(RedisConnectionFactory connectionFactory) throws JsonProcessingException {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
@@ -48,6 +52,10 @@ public class IRedisComponent {
         MessageListenerAdapter messageListener = new MessageListenerAdapter(redisProductMessageListener);
         messageListener.afterPropertiesSet();
         listenerContainer.addMessageListener(messageListener, new ChannelTopic("product"));
+
+        MessageListenerAdapter messageOrderListener = new MessageListenerAdapter(redisOrderMessageListener);
+        messageOrderListener.afterPropertiesSet();
+        listenerContainer.addMessageListener(messageOrderListener, new ChannelTopic("order"));
         return listenerContainer;
     }
 
