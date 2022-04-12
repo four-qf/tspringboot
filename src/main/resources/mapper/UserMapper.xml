@@ -44,7 +44,7 @@
                             `update_time`,
                             `operator`)
         values (#{username}, #{password},
-                #{phone}, #{email}, #{status}, #{email}, now(), now(), #{operator})
+                #{phone}, #{email}, #{status}, now(), now(), #{operator})
     </insert>
 
 </mapper>

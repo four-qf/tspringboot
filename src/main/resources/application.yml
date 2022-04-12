@@ -43,7 +43,7 @@ spring:
     cluster:
       nodes: 162.14.67.209:6379,162.14.67.209:6380,162.14.67.209:6381,162.14.67.209:6382,162.14.67.209:6384,162.14.67.209:6383
       max-redirects: 3
-    password: 123456
+    password: redis2022.11
   datasource:
     druid:
       stat-view-servlet:
@@ -93,10 +93,10 @@ server:
 
 
 #rocketmq
-#rocketmq.name-server: 81.71.31.103:9876
-#rocketmq.producer.group: crue-cat-test-group
-#rocketmq.producer.sendMessageTimeout: 10000
-#rocketmq.producer.isVIPChannel: false
+rocketmq.name-server: 101.35.101.154:9876;162.14.67.209:9876
+rocketmq.producer.group: crue-cat-test-group
+rocketmq.producer.sendMessageTimeout: 10000
+rocketmq.producer.isVIPChannel: false
 
 
 

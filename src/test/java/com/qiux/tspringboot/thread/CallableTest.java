@@ -1,5 +1,8 @@
 package com.qiux.tspringboot.thread;
 
+import org.apache.commons.lang.time.DateUtils;
+
+import java.util.Date;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.LockSupport;
 
@@ -11,14 +14,14 @@ import java.util.concurrent.locks.LockSupport;
 public class CallableTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        Future<Boolean> call1 = executorService.submit(new Work());
-        Future<Boolean> call2 = executorService.submit(new Work());
-        Future<Boolean> call3 = executorService.submit(new Work());
-        Boolean aBoolean = call1.get();
-        aBoolean = call3.get();
-        aBoolean = call2.get();
-        executorService.shutdown();
+//        ExecutorService executorService = Executors.newFixedThreadPool(3);
+//        Future<Boolean> call1 = executorService.submit(new Work());
+//        Future<Boolean> call2 = executorService.submit(new Work());
+//        Future<Boolean> call3 = executorService.submit(new Work());
+//        Boolean aBoolean = call1.get();
+//        aBoolean = call3.get();
+//        aBoolean = call2.get();
+//        executorService.shutdown();
 
 
     }
