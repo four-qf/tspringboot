@@ -24,13 +24,13 @@ public class MqConsumeOriginalB {
 
         DefaultMQPushConsumer mqPushConsumer = new DefaultMQPushConsumer();
         //配置mq服务器信息
-        mqPushConsumer.setNamesrvAddr("162.14.67.209:9876");
+        mqPushConsumer.setNamesrvAddr("qx.learn.com:9876;qx2.learn.com:9876");
         mqPushConsumer.setConsumerGroup("crue-cat-group-test");
         mqPushConsumer.setVipChannelEnabled(false);
 
         //订阅消息
 
-        mqPushConsumer.subscribe("crue-cat-test", MessageSelector.bySql("name='qx'"));
+        mqPushConsumer.subscribe("crue-cat-test","smile");
 //        mqPushConsumer.setMessageModel(MessageModel.BROADCASTING);
 
         //注册监听器

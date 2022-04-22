@@ -25,7 +25,7 @@ public class MqProducerOriginal {
 
         DefaultMQProducer mqProducer = new DefaultMQProducer("crue-cat-group");
         //1.设置mq服务地址
-        mqProducer.setNamesrvAddr("162.14.67.209:9876");
+        mqProducer.setNamesrvAddr("qx.learn.com:9876;qx2.learn.com:9876");
         mqProducer.setVipChannelEnabled(false);
 
 
@@ -35,8 +35,8 @@ public class MqProducerOriginal {
         user.setEmail("cat@126.com");
         user.setUsername("KK");
         Message message = new Message("crue-cat-test", "smile", JSONObject.toJSONString(user).getBytes(StandardCharsets.UTF_8));
-        message.putUserProperty("id", "1");
-        message.putUserProperty("name", "qx");
+//        message.putUserProperty("id", "1");
+//        message.putUserProperty("name", "qx");
 //        message.setDelayTimeLevel(5);
 
         //链接

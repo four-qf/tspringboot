@@ -26,14 +26,14 @@ public class MqConsumeOriginal {
         System.out.println("topic crue-cat-test 消费者启动成功---------------------");
         DefaultMQPushConsumer mqPushConsumer = new DefaultMQPushConsumer();
         //配置mq服务器信息
-        mqPushConsumer.setNamesrvAddr("162.14.67.209:9876");
+        mqPushConsumer.setNamesrvAddr("qx.learn.com:9876;qx2.learn.com:9876");
         mqPushConsumer.setConsumerGroup("crue-cat-group-test");
         mqPushConsumer.setVipChannelEnabled(false);
         //设置广播模式，每个消费者都会去消费消息
 //        mqPushConsumer.setMessageModel(MessageModel.BROADCASTING);
 
         //订阅消息
-        mqPushConsumer.subscribe("crue-cat-test", MessageSelector.bySql("id=1"));
+        mqPushConsumer.subscribe("crue-cat-test", "smile");
 
         //注册监听器
         mqPushConsumer.registerMessageListener(new MessageListenerConcurrently() {
