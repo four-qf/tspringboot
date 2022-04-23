@@ -34,7 +34,7 @@
         from `user`
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.qiux.tspringboot.entity.User" useGeneratedKeys="true" keyColumn="id">
+    <insert id="insert" parameterType="com.qiux.tspringboot.entity.User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into `user` (`username`,
                             `password`,
                             `phone`,
