@@ -62,6 +62,7 @@ spring:
 #          idle-timeout: 500000
 #          connection-timeout: 40000
 #          max-lifetime: 1800000
+
       db2:
         #druid数据池
         type: com.alibaba.druid.pool.DruidDataSource
@@ -75,10 +76,25 @@ spring:
 #          idle-timeout: 500000
 #          connection-timeout: 40000
 #          max-lifetime: 1800000
-    masterslave:
-      name: mse
-      master-data-source-name: db1
-      slave-data-source-names: db2
+    sharding:
+      tables:
+        product:
+          actual-data-nodes: authdb0.product$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: product$->{id % 2}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+      master-slave-rules:
+        authdb0:
+          master-data-source-name: db1
+          slave-data-source-names: db2
+#    masterslave:
+#      name: mse
+#      master-data-source-name: db1
+#      slave-data-source-names: db2
     props:
       sql:
         show: true
@@ -113,6 +129,11 @@ mybatis.configuration.map-underscore-to-camel-case: true
 #logging.level: debug
 logging.config: classpath:logback-spring.xml
 
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 server:
   port: 8087
