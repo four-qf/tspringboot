@@ -6,12 +6,13 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="type" jdbcType="CHAR" property="type" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, product_name, type, create_time, update_time
+    id, product_name, type,price,create_time, update_time
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -30,10 +31,10 @@
     where id = #{id}
   </delete>
 
-  <insert id="insert" parameterType="com.qiux.tspringboot.entity.Product" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
-    insert into product( product_name, type,
+  <insert id="insert" parameterType="com.qiux.tspringboot.entity.Product" keyProperty="id" keyColumn="id">
+    insert into product( product_name, type, price,
       create_time, update_time)
-    values (#{productName,jdbcType=VARCHAR}, #{type,jdbcType=CHAR},
+    values (#{productName,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{price},
       now(),now())
   </insert>
 
@@ -49,6 +50,9 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="price != null">
+        price = #{price},
+      </if>
     </set>
     where id = #{id}
   </update>
@@ -57,6 +61,7 @@
     update product
     set product_name = #{productName,jdbcType=VARCHAR},
       type = #{type,jdbcType=CHAR},
+        price = #{price},
       update_time = now()
     where id = #{id}
   </update>

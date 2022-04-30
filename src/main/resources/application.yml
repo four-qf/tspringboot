@@ -91,6 +91,18 @@ spring:
         authdb0:
           master-data-source-name: db1
           slave-data-source-names: db2
+      encrypt-rule:
+        encryptors:
+          md5_encryptor:
+            type: MD5
+#            props:
+#              aes.key.value: 123456abc
+        tables:
+          user:
+              columns:
+                password:
+                  cipher-column: password
+                  encryptor: md5_encryptor
 #    masterslave:
 #      name: mse
 #      master-data-source-name: db1
