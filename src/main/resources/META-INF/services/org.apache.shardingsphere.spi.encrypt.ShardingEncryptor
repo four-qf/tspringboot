@@ -1,0 +1,3 @@
+org.apache.shardingsphere.core.strategy.encrypt.impl.MD5ShardingEncryptor
+org.apache.shardingsphere.core.strategy.encrypt.impl.AESShardingEncryptor
+com.qiux.tspringboot.util.Sha256ShardingEncryptor

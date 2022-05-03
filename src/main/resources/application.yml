@@ -93,8 +93,8 @@ spring:
           slave-data-source-names: db2
       encrypt-rule:
         encryptors:
-          md5_encryptor:
-            type: MD5
+          sha256_encryptor:
+            type: Sha256
 #            props:
 #              aes.key.value: 123456abc
         tables:
@@ -102,7 +102,7 @@ spring:
               columns:
                 password:
                   cipher-column: password
-                  encryptor: md5_encryptor
+                  encryptor: sha256_encryptor
 #    masterslave:
 #      name: mse
 #      master-data-source-name: db1
