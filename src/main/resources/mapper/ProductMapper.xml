@@ -47,12 +47,10 @@
       <if test="type != null">
         type = #{type,jdbcType=CHAR},
       </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="price != null">
         price = #{price},
       </if>
+      update_time = now()
     </set>
     where id = #{id}
   </update>

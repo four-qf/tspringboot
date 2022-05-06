@@ -47,4 +47,9 @@ public class ProductController {
         return products;
     }
 
+    @PostMapping("/test-tx")
+    public Boolean testTransantion(Product product) {
+        return productService.update(product);
+    }
+
 }

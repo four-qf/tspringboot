@@ -3,11 +3,16 @@ package com.qiux.tspringboot.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.qiux.tspringboot.entity.Product;
+import com.qiux.tspringboot.entity.User;
 import com.qiux.tspringboot.mapper.ProductMapper;
 import com.qiux.tspringboot.service.ProductService;
+import com.qiux.tspringboot.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
+import org.apache.shardingsphere.transaction.core.TransactionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +27,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductMapper productMapper;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public Product create(Product product) {
@@ -48,7 +56,20 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productMapper.queryAll();
         log.info("queryPage --------- page:{}", page);
         return products;
-
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    @ShardingTransactionType(TransactionType.XA)
+    public Boolean update(Product product) {
+        int rows = productMapper.updateByPrimaryKeySelective(product);
+        if (rows >0) {
+            User user = userService.create(new User("qx_" + product.getId(), "123456", "17608242765"));
+            return user != null;
+//            int i = 2/0;
+        }
+        return false;
+    }
+
 
 }
