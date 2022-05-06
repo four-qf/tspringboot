@@ -60,6 +60,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    //------------TransactionType.BASE柔性事务需要使用seata+nacos配合使用 TODO
     @ShardingTransactionType(TransactionType.XA)
     public Boolean update(Product product) {
         int rows = productMapper.updateByPrimaryKeySelective(product);
