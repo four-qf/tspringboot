@@ -1,6 +1,7 @@
 package com.qiux.tspringboot.effective_java.reference;
 
 import com.qiux.tspringboot.entity.Student;
+import org.springframework.util.CollectionUtils;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
@@ -27,8 +28,21 @@ public class PhantomReferenceTest {
         list.add(createStudent());
     }
 
+    public void remove(int size){
+        if (size <= list.size()&& CollectionUtils.isEmpty(list)) {
+            Student student = list.get(size);
+            if (student != null) {
+                student = null;
+                list.remove(size);
+            }
+        }
+
+    }
+
     private Student createStudent() {
-        return new Student();
+        Student student = new Student();
+        list.add(student);
+        return student;
     }
 
     //启动一个线程监控回收队列
@@ -40,6 +54,7 @@ public class PhantomReferenceTest {
                 while (true) {
                     try {
                         reference = (Reference<Student>) referenceQueue.remove();
+                        reference.get();
                         if (reference != null) {
                             System.out.println("collect:" + reference);
                         }
@@ -74,6 +89,10 @@ public class PhantomReferenceTest {
             }
             phantomReferenceTest.validStudent();
             phantomReferenceTest.add();
+            if (i%2 ==0) {
+                System.out.println(i);
+                phantomReferenceTest.remove(i/2);
+            }
             System.gc();
             phantomReferenceTest.validStudent();
             System.out.println("--------------------------------------------------");
