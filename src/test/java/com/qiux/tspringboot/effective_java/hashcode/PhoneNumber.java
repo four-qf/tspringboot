@@ -1,4 +1,4 @@
-package com.qiux.tspringboot.effective_java.reference;
+package com.qiux.tspringboot.effective_java.hashcode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +40,7 @@ public class PhoneNumber {
 
     @Override
     public boolean equals(Object obj) {
+
         if (obj == this) return true;
         if (!(obj instanceof PhoneNumber)) return false;
         PhoneNumber pn = (PhoneNumber) obj;
@@ -58,7 +59,7 @@ public class PhoneNumber {
         return result;
     }
 
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         PhoneNumber phoneNumber = new PhoneNumber(707, 867, 5309);
         PhoneNumber phoneNumber2 = new PhoneNumber(707, 867, 5309);
         System.out.println(phoneNumber.equals(phoneNumber2));
