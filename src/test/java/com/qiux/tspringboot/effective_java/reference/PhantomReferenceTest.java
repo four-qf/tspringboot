@@ -57,6 +57,7 @@ public class PhantomReferenceTest {
                         reference = (Reference<Student>) referenceQueue.remove();
                         if (reference != null) {
                             System.out.println("collect:" + reference);
+                            break;
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -75,15 +76,15 @@ public class PhantomReferenceTest {
     public static void main(String[] args) {
 
         PhantomReferenceTest phantomReferenceTest = new PhantomReferenceTest();
+        phantomReferenceTest.referenceQueueMonitor();
         phantomReferenceTest.remove(0);
         System.gc();
         phantomReferenceTest.validStudent();
-        phantomReferenceTest.referenceQueueMonitor();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(50);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         System.out.println("--------------------------------------------------");
 
