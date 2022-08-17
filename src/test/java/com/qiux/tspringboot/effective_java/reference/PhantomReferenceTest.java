@@ -28,12 +28,13 @@ public class PhantomReferenceTest {
         list.add(createStudent());
     }
 
-    public void remove(int size){
-        if (size <= list.size()&& CollectionUtils.isEmpty(list)) {
+    public void remove(int size) {
+        if (size <= list.size() && !CollectionUtils.isEmpty(list)) {
             Student student = list.get(size);
             if (student != null) {
                 student = null;
                 list.remove(size);
+                System.out.println("remove:" + size);
             }
         }
 
@@ -54,7 +55,6 @@ public class PhantomReferenceTest {
                 while (true) {
                     try {
                         reference = (Reference<Student>) referenceQueue.remove();
-                        reference.get();
                         if (reference != null) {
                             System.out.println("collect:" + reference);
                         }
@@ -74,29 +74,18 @@ public class PhantomReferenceTest {
 
     public static void main(String[] args) {
 
-//        ReferenceQueue<Student> referenceQueue = new ReferenceQueue();
-//        PhantomReference<Student> phantomReference = new PhantomReference<>(new Student(),referenceQueue);
-//        System.out.println(phantomReference.get());
-//        System.gc();
-        int i =0;
-        while ( i++ <10) {
-            PhantomReferenceTest phantomReferenceTest = new PhantomReferenceTest();
-            phantomReferenceTest.referenceQueueMonitor();
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            phantomReferenceTest.validStudent();
-            phantomReferenceTest.add();
-            if (i%2 ==0) {
-                System.out.println(i);
-                phantomReferenceTest.remove(i/2);
-            }
-            System.gc();
-            phantomReferenceTest.validStudent();
-            System.out.println("--------------------------------------------------");
+        PhantomReferenceTest phantomReferenceTest = new PhantomReferenceTest();
+        phantomReferenceTest.remove(0);
+        System.gc();
+        phantomReferenceTest.validStudent();
+        phantomReferenceTest.referenceQueueMonitor();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+        System.out.println("--------------------------------------------------");
 
     }
 
