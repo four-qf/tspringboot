@@ -15,9 +15,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CustomerFactoryBean implements FactoryBean<TestService> {
+//    @Override
+//    public TestService getObject() throws Exception {
+//        return new TestService();
+//    }
+
     @Override
     public TestService getObject() throws Exception {
-        return new TestService();
+        return null;
     }
 
     @Override

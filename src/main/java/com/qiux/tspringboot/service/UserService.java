@@ -11,6 +11,6 @@ public interface UserService {
 
     User queryById(Integer id);
 
-    User create(User user);
+    User create(User user) throws Exception;
 
 }

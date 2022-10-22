@@ -5,6 +5,8 @@ import com.qiux.tspringboot.mapper.UserMapper;
 import com.qiux.tspringboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author qiux
@@ -22,9 +24,11 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
     @Override
-    public User create(User user) {
+    public User create(User user) throws Exception {
         int row = userMapper.insert(user);
+//        throw new Exception("插入user失败");
         return row > 0 ? user : null;
     }
 

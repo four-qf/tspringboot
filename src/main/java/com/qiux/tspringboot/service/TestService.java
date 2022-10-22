@@ -5,9 +5,8 @@ package com.qiux.tspringboot.service;
  * @Date 2022/2/12
  * @since
  */
-public class TestService {
+public interface TestService<T> {
 
-    public TestService() {
-        System.out.println("TestService constant");
-    }
+     String submit(T t);
+
 }

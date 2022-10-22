@@ -41,7 +41,11 @@ public class UserController {
 
     @PostMapping("/create")
     public User create(User user) {
-        user = userService.create(user);
+        try {
+            user = userService.create(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return user;
     }
 

@@ -25,7 +25,11 @@ public class ProductController {
 
     @PostMapping("/create")
     public Product create(Product product) {
-        product = productService.create(product);
+        try {
+            product = productService.create(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return product;
     }
 
@@ -49,7 +53,12 @@ public class ProductController {
 
     @PostMapping("/test-tx")
     public Boolean testTransantion(Product product) {
-        return productService.update(product);
+        try {
+            return productService.update(product);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }

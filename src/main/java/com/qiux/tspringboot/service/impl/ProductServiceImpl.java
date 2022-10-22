@@ -12,6 +12,7 @@ import org.apache.shardingsphere.transaction.annotation.ShardingTransactionType;
 import org.apache.shardingsphere.transaction.core.TransactionType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -62,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
     @Transactional(rollbackFor = Exception.class)
     //------------TransactionType.BASE柔性事务需要使用seata+nacos配合使用 TODO
     @ShardingTransactionType(TransactionType.XA)
-    public Boolean update(Product product) {
+    public Boolean update(Product product) throws Exception {
         int rows = productMapper.updateByPrimaryKeySelective(product);
         if (rows >0) {
             User user = userService.create(new User("qx_" + product.getId(), "123456", "17608242765"));

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface ProductService {
 
-    Product create(Product product);
+    Product create(Product product) throws Exception;
 
     Product query(Long id);
 
@@ -20,6 +20,6 @@ public interface ProductService {
 
     List<Product> queryPage(Integer pageNo, Integer pageSize);
 
-    Boolean update(Product product);
+    Boolean update(Product product) throws Exception;
 
 }

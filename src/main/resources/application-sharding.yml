@@ -1,0 +1,161 @@
+## 框架集成属性配置
+#spring:
+#  application:
+#    name: nacos-config
+#  profiles:
+##    active: dev
+#  main:
+#    allow-bean-definition-overriding: true
+#  cloud:
+#    nacos:
+#      username: nacos
+#      password: nacos
+#      config:
+#        server-addr: 127.0.0.1:8848
+#        file-extension: yaml
+#        refresh-enabled: true
+#        namespace: 2af38fe3-2f71-45f9-b685-fc090abc021d
+##        group: '${nacos.group}'
+#      discovery:
+#        enabled: true
+#        register-enabled: true
+#        namespace: 2af38fe3-2f71-45f9-b685-fc090abc021d
+#        server-addr: 127.0.0.1:8848
+#        group: '${nacos.group}'
+
+# Actuator
+#management.endpoints.web.exposure.include: *
+
+# 管理端口
+spring.output.ansi.enabled: ALWAYS
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  devtools:
+    restart:
+      enabled: false #禁用热重启，只留热加载静态资源
+  redis:
+#    host: 127.0.0.1
+#    port: 6379
+    lettuce:
+      pool:
+        min-idle: 2
+    timeout: 1000
+    cluster:
+      nodes: qx2.learn.com:6379,qx2.learn.com:6380,qx2.learn.com:6381,qx2.learn.com:6382,qx2.learn.com:6384,qx2.learn.com:6383
+      max-redirects: 3
+    password: redis2022.11
+  shardingsphere:
+    datasource:
+      names: db1,db2
+      db1:
+        #druid数据池
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://162.14.67.209:3306/auth_center_admin?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+        username: root
+        password: 123456
+#        druid:
+#          maximum-pool-size: 20
+#          minimum-idle: 3
+#          idle-timeout: 500000
+#          connection-timeout: 40000
+#          max-lifetime: 1800000
+
+      db2:
+        #druid数据池
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://qx.learn.com:3306/auth_center_admin?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
+        username: root
+        password: mysql2022.04@
+#        druid:
+#          maximum-pool-size: 20
+#          minimum-idle: 3
+#          idle-timeout: 500000
+#          connection-timeout: 40000
+#          max-lifetime: 1800000
+    sharding:
+      tables:
+        product:
+          actual-data-nodes: authdb0.product$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: product$->{id % 2}
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+      master-slave-rules:
+        authdb0:
+          master-data-source-name: db1
+          slave-data-source-names: db2
+      encrypt-rule:
+        encryptors:
+          sha256_encryptor:
+            type: Sha256
+#            props:
+#              aes.key.value: 123456abc
+        tables:
+          user:
+              columns:
+                password:
+                  cipher-column: password
+                  encryptor: sha256_encryptor
+#    masterslave:
+#      name: mse
+#      master-data-source-name: db1
+#      slave-data-source-names: db2
+    props:
+      sql:
+        show: true
+#
+###druid数据池filter
+#spring.datasource.druid.filters: conn,config,stat
+##spring.datasource.druid.connection-properties: config.decrypt: true;config.decrypt.key: ${public-key}
+#spring.datasource.druid.test-on-borrow: true
+#spring.datasource.druid.test-on-return: true
+#spring.datasource.druid.test-while-idle: true
+#spring.datasource.druid.filter.log4j.enabled: true
+#spring.datasource.druid.filter.stat.log-slow-sql: true
+
+##SQL防注入
+###是否防御sql注入攻击
+#spring.datasource.druid.filter.wall.enable: true
+####数据库类型配置
+#spring.datasource.druid.filter.wall.db-type: mysql
+####是否允许执行DELETE语句
+#spring.datasource.druid.filter.wall.config.delete-allow: false
+####是否允许执行drop table语句
+#spring.datasource.druid.filter.walll.config.drop-table-allow: false
+##public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALS8ng1XvgHrdOgm4pxrnUdt3sXtu/E8My9KzX8sXlz+mXRZQCop7NVQLne25pXHtZoDYuMh3bzoGj6v5HvvAQ8CAwEAAQ: :
+
+
+
+
+#mybatis配置
+mybatis.mapper-locations: classpath*:/mapper/*.xml
+mybatis.type-aliases-package: com.qiux.tspringboot.mapper
+mybatis.configuration.map-underscore-to-camel-case: true
+#logging.level: debug
+logging.config: classpath:logback-spring.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+server:
+  port: 8087
+
+
+#rocketmq
+rocketmq.name-server: qx.learn.com:9876;qx2.learn.com:9876
+rocketmq.producer.group: crue-cat-test-group
+rocketmq.producer.sendMessageTimeout: 10000
+rocketmq.producer.isVIPChannel: false
+
+
+

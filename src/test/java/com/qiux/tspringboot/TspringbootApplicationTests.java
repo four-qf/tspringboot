@@ -1,7 +1,9 @@
 package com.qiux.tspringboot;
 
+import com.qiux.tspringboot.entity.Product;
 import com.qiux.tspringboot.redis.RedisHelp;
 import com.qiux.tspringboot.entity.Student;
+import com.qiux.tspringboot.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,8 @@ import java.util.List;
 @Slf4j
 class TspringbootApplicationTests {
 
+    @Autowired
+    private ProductService productService;
 //    @Autowired
 //    private StudentService studentService;
 
@@ -32,20 +37,32 @@ class TspringbootApplicationTests {
     private RedisHelp redisHelp;
 
     @Test
-    public void testRedisAddString() {
-        Student student = new Student();
-        student.setAge(19);
-        student.setName("bn");
-        student.setId(8);
+    public void test() throws Exception {
+        Product product = new Product();
+        product.setProductName("qx3");
+        product.setId(2L);
+        product.setPrice(BigDecimal.valueOf(37));
+        productService.update(product);
 
-        redisHelp.set("user", student);
-    }
 
-    @Test
-    public void testRedisGetString() {
-        Student user = redisHelp.get("user");
-        System.out.println(user);
     }
+//    @Autowired
+//    private RedisHelp redisHelp;
+//    @Test
+//    public void testRedisAddString() {
+//        Student student = new Student();
+//        student.setAge(19);
+//        student.setName("bn");
+//        student.setId(8);
+//
+//        redisHelp.set("user", student);
+//    }
+//
+//    @Test
+//    public void testRedisGetString() {
+//        Student user = redisHelp.get("user");
+//        System.out.println(user);
+//    }
 
     @Test
     void contextLoads() throws InterruptedException, SQLException, InvalidConfigurationException, XMLParserException, IOException {
