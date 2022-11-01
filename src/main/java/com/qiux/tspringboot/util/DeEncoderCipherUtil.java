@@ -1,8 +1,8 @@
 package com.qiux.tspringboot.util;
 
 import com.google.common.base.Strings;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+//import sun.misc.BASE64Decoder;
+//import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -80,7 +80,8 @@ public class DeEncoderCipherUtil {
 
         try {
             byte[] encrypt = encrypt(originalContent.getBytes(), key.getBytes());
-            return new BASE64Encoder().encode(encrypt);
+//            return new BASE64Encoder().encode(encrypt);
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,13 +91,13 @@ public class DeEncoderCipherUtil {
 
     public static String decrypt(String cipherText, String key) throws Exception {
 
-        BASE64Decoder base64Decoder = new BASE64Decoder();
-        byte[] bytes = base64Decoder.decodeBuffer(cipherText);
+//        BASE64Decoder base64Decoder = new BASE64Decoder();
+//        byte[] bytes = base64Decoder.decodeBuffer(cipherText);
 
-        byte[] decrypt = decrypt(bytes, key.getBytes());
+//        byte[] decrypt = decrypt(bytes, key.getBytes());
 
 
-        return new String(decrypt);
+        return new String("decrypt");
 
     }
 
